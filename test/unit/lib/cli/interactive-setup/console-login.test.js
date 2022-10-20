@@ -32,12 +32,6 @@ describe('test/unit/lib/cli/interactive-setup/console-login.test.js', function (
     expect(context.inapplicabilityReasonCode).to.equal('NON_CONSOLE_CONTEXT');
   });
 
-  it('Should be ineffective, when not at service path', async () => {
-    const context = { isConsole: true };
-    expect(await step.isApplicable(context)).to.be.false;
-    expect(context.inapplicabilityReasonCode).to.equal('NOT_IN_SERVICE_DIRECTORY');
-  });
-
   it('Should be ineffective, when logged in', async () => {
     const { servicePath: serviceDir, serviceConfig: configuration } = await fixtures.setup(
       'aws-loggedin-console-service'
